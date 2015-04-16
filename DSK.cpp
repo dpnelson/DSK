@@ -15,6 +15,27 @@
 
 using namespace std;
 
+//khademul
+void no_files(ofstream &log)
+{
+    
+    cout << "No input files to process";
+    log  << "No input files to process";
+    
+}
+
+//function to open input file
+void open_input(ifstream &IF, string IF2)
+{
+    IF.open(IF2.c_str());
+    if ( !IF.is_open() )
+    {
+        cout << "Cannot open input file: "
+             << IF2
+             << endl;
+        exit(EXIT_FAILURE);
+    }
+}
 
 // Opens log and output files
 void open_outputfiles(ofstream &file, string file2, string file3)
