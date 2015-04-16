@@ -10,6 +10,62 @@ string Earthquake::get_id()
     return eyedee;
 }
 
+// khademul
+
+// function to make sure only numbers are used in the data
+string Earthquake::GetDateSubStr(int ii, string &tempS)
+{
+    tempS = date.substr(ii,1);
+    return tempS;
+}
+
+bool Earthquake::CheckDateLength()
+{
+    if (date.length() != 10) return false;
+    return true;
+}
+
+bool Earthquake::CheckMonthRange(int mon)
+{
+    if (mon < 1 || mon > 12) return false;
+    return true;
+}
+
+bool Earthquake::CheckDayRange(int day)
+{
+    if (day < 1 || day > 31) return false;
+    return true;
+}
+
+bool Earthquake::CheckYearRange(int year)
+{
+    if (year > 2015) return false;
+    return true;
+}
+
+//khademul
+
+// This function makes sure that the day of the month and month of the year combination is valid
+bool Earthquake::MonthDayComboCheck(int day, int month)
+{
+    switch (month)
+    {
+        case 2:
+            if (day > 28)
+            {
+                return false;
+                break;
+            }
+        case 4: case 6: case 9: case 11:
+            if (day == 31)
+            {
+                return false;
+                break;
+            }
+        default:
+            return true;
+    }
+}
 
 // sabber 
 
