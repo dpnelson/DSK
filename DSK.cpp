@@ -28,6 +28,26 @@ void open_outputfiles(ofstream &file, string file2, string file3)
     }
 }
 
+int OpenIPOP(ofstream &log, string &file, string &inputfilename, string &outputfilename, ifstream &input, ofstream &output)
+{
+    
+    inputfilename = file + ".in";
+    string inputfilename2 = file + ".txt";
+    input.open(inputfilename2.c_str());
+    if ( !input.is_open() )
+    {
+        cout << inputfilename + " does not exist\n\n====\n\n";
+        log  << inputfilename + " does not exist\n\n====\n\n";
+        return 100;
+    }
+    
+    outputfilename = file + ".out";
+    output.open(outputfilename.c_str());
+    
+    return 10;
+    
+}
+
 
 int main(int argc, char* argv[])
 {
