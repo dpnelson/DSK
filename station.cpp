@@ -35,3 +35,54 @@ string Station::getNC()
     if (NC == WR) return  "WR";
     exit(EXIT_FAILURE);
 }
+
+
+// Sabber 
+
+bool Station::CheckNC(string &check)
+{
+    changetoupper(check);
+    if(check == "CE")
+    {
+        return true;
+    } else if (check == "CI")
+    {
+        return true;
+    } else if (check == "FA")
+    {
+        return true;
+    } else if (check == "NP")
+    {
+        return true;
+    } else if (check == "WR")
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
+}
+
+
+void Station::SetNC(string check)
+{
+    if(check == "CE")
+    {
+        NC = CE;
+    } else if (check == "CI")
+    {
+        NC = CI;
+    } else if (check == "FA")
+    {
+        NC = FA;
+    } else if (check == "NP")
+    {
+        NC = NP;
+    } else if (check == "WR")
+    {
+        NC = WR;
+    }
+}
+
+
+
