@@ -16,6 +16,19 @@
 using namespace std;
 
 
+// Opens log and output files
+void open_outputfiles(ofstream &file, string file2, string file3)
+{
+    file.open(file3.c_str());
+    if ( !file.is_open() )
+    {
+        cout << "Cannot open " << file2 << "file: " << file3;
+        file.flush();
+        exit(EXIT_FAILURE);
+    }
+}
+
+
 int main(int argc, char* argv[])
 {
     

@@ -13,6 +13,13 @@
 #include <math.h>
 
 
+void backslash(ofstream &LF, string ret)
+{
+    cout << ret;
+    LF   << ret;
+}
+
+
 void Set::CSE(ifstream &IF, ofstream &logfile, ofstream &OF, string ID) {
     
     Earthquake eq;
