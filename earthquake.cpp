@@ -15,6 +15,20 @@ string Earthquake::get_id()
 
 // Functions to check time (ss, mm, hh) validity
 
+// Checks that time seperators are individually valid
+bool Earthquake::CheckTimeSeperators(string tempS, string VarExp)
+{
+    if (tempS.compare(VarExp) != 0) return false;
+    return true;
+}
+
+// Checks that only numbers are used in the time
+bool Earthquake::CheckTimeValidity(int place)
+{
+    if (!isdigit(time[place])) return false;
+    return true;
+}
+
 
 void Earthquake::set_time(string timetime)
 {
