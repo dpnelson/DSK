@@ -26,6 +26,38 @@ void Station::BadEntry(ofstream &LF, int z, int &change, string errortype)
     LF   << " Invalid " << errortype;
 }
 
+bool Station::CheckBT(string &TB)
+{
+    changetoupper(TB);
+    if(TB == "LONG-PERIOD" || TB == "LONGPERIOD")
+    {
+        return true;
+    } else if (TB == "SHORT-PERIOD" || TB == "SHORTPERIOD")
+    {
+        return true;
+    } else if (TB == "BROADBAND")
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
+}
+
+void Station::SetBT(string TB)
+{
+    if(TB == "LONG-PERIOD" || TB == "LONGPERIOD" )
+    {
+        BT = LONGPERIOD;
+    } else if (TB == "SHORT-PERIOD" || TB == "SHORTPERIOD")
+    {
+        BT = SHORTPERIOD;
+    } else if (TB == "BROADBAND")
+    {
+        BT = BROADBAND;
+    }
+}
+
 string Station::getNC()
 {
     if (NC == CE) return  "CE";
