@@ -19,6 +19,11 @@ void backslash(ofstream &LF, string ret)
     LF   << ret;
 }
 
+void printout(string ID, ofstream &out, string NetC, string SN, string SCab, string ITab, char O)
+{
+    out << ID << "." << NetC << "." << SN << "." << SCab << ITab << O << "\n";
+}
+
 
 void Set::CSE(ifstream &IF, ofstream &logfile, ofstream &OF, string ID) {
     
