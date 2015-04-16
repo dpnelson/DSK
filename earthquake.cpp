@@ -15,6 +15,24 @@ string Earthquake::get_id()
 
 // Functions to check time (ss, mm, hh) validity
 
+
+void Earthquake::set_time(string timetime)
+{
+    time = timetime;
+}
+
+// this function ensures that,  only numbers are used in the data
+void Earthquake::GetTimeSubStr(int ii, string &tempS)
+{
+    tempS = time.substr(ii,1);
+}
+
+bool Earthquake::CheckTimeLength()
+{
+    if (time.length() != 12) return false;
+    return true;
+}
+
 bool Earthquake::CheckHourRange(int h)
 {
     if (h > 23) return false;
