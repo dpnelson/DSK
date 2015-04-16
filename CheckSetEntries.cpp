@@ -12,6 +12,12 @@
 #include <stdio.h>
 #include <math.h>
 
+//khademul
+void print2(ofstream &LF, string texty, int n)
+{
+    cout << texty << n << "\n";
+    LF   << texty << n << "\n";
+}
 
 void backslash(ofstream &LF, string ret)
 {
