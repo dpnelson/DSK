@@ -13,6 +13,25 @@ string Earthquake::get_id()
 
 // sabber 
 
+// Functions to check time (ss, mm, hh) validity
+
+bool Earthquake::CheckHourRange(int h)
+{
+    if (h > 23) return false;
+    return true;
+}
+
+bool Earthquake::CheckMinuteRange(int m)
+{
+    if (m > 59) return false;
+    return true;
+}
+
+bool Earthquake::CheckSecondRange(int s)
+{
+    if (s > 59) return false;
+    return true;
+}
 
 
 // This function set earthquake name
@@ -40,22 +59,22 @@ void Earthquake::set_eq_name(ifstream &IF)
 
 // This function checks the validity of magnitude type
 
-bool Earthquake::set_mag_type(string magType)
+bool Earthquake::set_mag_type(string magtypemagtype)
 {
-    changetoupper(magType);
-    if(magType == "ML")
+    changetoupper(magtypemagtype);
+    if(magtypemagtype == "ML")
     {
         magnitude_type = ML;
         return true;
-    } else if (magType == "MS")
+    } else if (magtypemagtype == "MS")
     {
         magnitude_type = MS;
         return true;
-    } else if (magType == "MB")
+    } else if (magtypemagtype == "MB")
     {
         magnitude_type = MB;
         return true;
-    } else if (magType == "MW")
+    } else if (magtypemagtype == "MW")
     {
         magnitude_type = MW;
         return true;
