@@ -60,6 +60,40 @@ void Station::SetBT(string TB)
     }
 }
 
+//khademul
+bool Station::CheckIT(string &INST)
+{
+    changetoupper(INST);
+    if(INST == "HIGH-GAIN" || INST == "HIGHGAIN")
+    {
+        return true;
+    } else if (INST == "LOW-GAIN" || INST == "LOWGAIN")
+    {
+        return true;
+    } else if (INST == "ACCELEROMETER")
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
+}
+
+//khademul
+void Station::SetIT(string INST)
+{
+    if(INST == "HIGH-GAIN" || INST == "HIGHGAIN")
+    {
+        IT = HIGHGAIN;
+    } else if (INST == "LOW-GAIN" || INST == "LOWGAIN")
+    {
+        IT = LOWGAIN;
+    } else if (INST == "ACCELEROMETER")
+    {
+        IT = ACCELEROMETER;
+    }
+}
+
 string Station::getNC()
 {
     if (NC == CE) return  "CE";
