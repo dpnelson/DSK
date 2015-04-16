@@ -13,6 +13,31 @@ string Earthquake::get_id()
 
 // sabber 
 
+
+
+// This function set earthquake name
+
+void Earthquake::set_eq_name(ifstream &IF)
+{
+    int check = 1, check2 = 1;
+    string Name = "", Ename;
+    while(check == 1)
+    {
+        IF >> Name;
+        if (check2 == 1)
+        {
+            Ename = Name;
+            check2 = 0;
+        } else
+        {
+            Ename = Ename + " " + Name;
+        }
+        if(IF.peek() == '\n') check = 0;
+    }
+    earthquake_name = Ename;
+}
+
+
 // This function checks the validity of magnitude type
 
 bool Earthquake::set_mag_type(string magType)
