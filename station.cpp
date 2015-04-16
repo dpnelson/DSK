@@ -94,6 +94,78 @@ void Station::SetIT(string INST)
     }
 }
 
+//khademul
+bool Station::CheckOR(string ORE)
+{
+    int check = 0, x = 0, length = 0;
+    while (isalpha(ORE[x]) || isdigit(ORE[x]))
+    {
+        length++;
+        x++;
+    }
+    if(length < 1 || length > 3) // Orientation characters check
+    {
+        check = 1;
+    }
+    int alphacount = 0, numbercount = 0;
+    for (int g = 1; g <= length; g++)
+    {
+        if (isalpha(ORE[g-1]))
+        {
+            alphacount++;
+        } else if (isdigit(ORE[g-1]))
+        {
+            numbercount++;
+        } else
+        {
+            check = 1;
+        }
+    }
+    
+    if (alphacount != length && numbercount != length)
+    {
+        check = 1;
+    }
+    
+    if (alphacount != 0)  // Orientation letters check
+    {
+        changetoupper(ORE);
+        for (int c = 1; c <= length; c++)
+        {
+            string tempString = ORE.substr(c-1,1);
+            if (tempString.compare("N") && tempString.compare("E") && tempString.compare("Z"))
+            {
+                check = 1;
+            }
+        }
+    }
+    
+    if (numbercount != 0)  // Orientation numbers check
+    {
+        for (int c = 1; c <= length; c++)
+        {
+            string tempString = ORE.substr(c-1,1);
+            if (tempString.compare("1") && tempString.compare("2") && tempString.compare("3"))
+            {
+                check = 1;
+            }
+        }
+    }
+    if (check == 1)
+    {
+        return false;
+    } else
+    {
+        return true;
+    }
+}
+
+//khademul
+void Station::SetOR(string check)
+{
+    OR = check;
+}
+
 string Station::getNC()
 {
     if (NC == CE) return  "CE";
@@ -104,6 +176,13 @@ string Station::getNC()
     exit(EXIT_FAILURE);
 }
 
+//khademul
+string Station::getOR()
+{
+    
+    return OR;
+    
+}
 
 // Sabber 
 
@@ -152,5 +231,13 @@ void Station::SetNC(string check)
     }
 }
 
+//khademul
 
+string Station::getIT()
+{
+    if (IT == HIGHGAIN)       return "H";
+    if (IT == LOWGAIN)        return "L";
+    if (IT == ACCELEROMETER)  return "N";
+    exit(EXIT_FAILURE);
+}
 
