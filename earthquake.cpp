@@ -10,6 +10,127 @@ string Earthquake::get_id()
     return eyedee;
 }
 
+// khademul
+
+// function to make sure only numbers are used in the data
+string Earthquake::GetDateSubStr(int ii, string &tempS)
+{
+    tempS = date.substr(ii,1);
+    return tempS;
+}
+
+bool Earthquake::CheckDateLength()
+{
+    if (date.length() != 10) return false;
+    return true;
+}
+
+bool Earthquake::CheckMonthRange(int mon)
+{
+    if (mon < 1 || mon > 12) return false;
+    return true;
+}
+
+bool Earthquake::CheckDayRange(int day)
+{
+    if (day < 1 || day > 31) return false;
+    return true;
+}
+
+bool Earthquake::CheckYearRange(int year)
+{
+    if (year > 2015) return false;
+    return true;
+}
+
+//khademul
+
+// This function makes sure that the day of the month and month of the year combination is valid
+bool Earthquake::MonthDayComboCheck(int day, int month)
+{
+    switch (month)
+    {
+        case 2:
+            if (day > 28)
+            {
+                return false;
+                break;
+            }
+        case 4: case 6: case 9: case 11:
+            if (day == 31)
+            {
+                return false;
+                break;
+            }
+        default:
+            return true;
+    }
+}
+
+//khademul
+// This function obtains month, day, and year from earthquake date
+void Earthquake::MDY(string &MM, string &DD, string &YY)
+{
+    MM = date.substr(0,2);
+    DD = date.substr(3,2);
+    YY = date.substr(6,4);
+}
+
+// Individual date separator check
+bool Earthquake::CheckDateSeperators(string tempS)
+{
+    if (tempS.compare("/") != 0 && tempS.compare("-") != 0) return false;
+    return true;
+}
+
+// Number check in the date
+bool Earthquake::CheckDateValidity(int place)    
+{
+    if (!isdigit(date[place])) return false;
+    return true;
+}
+
+// Same date separator check
+bool Earthquake::CheckDateSeperators2(int aa, int bb)
+{
+    if (date[aa] != date[bb]) return false;
+    return true;
+}
+
+void Earthquake::set_date(string datedate)
+{
+    date = datedate;
+}
+
+// Number check in the time
+void Earthquake::GetTimeSubStr(int ii, string &tempS)
+{
+    tempS = time.substr(ii,1);
+}
+
+bool Earthquake::CheckTimeLength()
+{
+    if (time.length() != 12) return false;
+    return true;
+}
+
+bool Earthquake::CheckHourRange(int h)
+{
+    if (h > 23) return false;
+    return true;
+}
+
+bool Earthquake::CheckMinuteRange(int m)
+{
+    if (m > 59) return false;
+    return true;
+}
+
+bool Earthquake::CheckSecondRange(int s)
+{
+    if (s > 59) return false;
+    return true;
+}
 
 // sabber 
 
