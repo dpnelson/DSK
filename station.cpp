@@ -153,4 +153,72 @@ void Station::SetNC(string check)
 }
 
 
+bool Station::CheckSC(string StatCode)
+{
+    int check = 0;
+    // Ensures Station code is either 3 or 5 characters long
+    if(StatCode.length() != 3 && StatCode.length() != 5)
+    {
+        check = 1;
+    } else
+    {   // Ensures code is all numbers if 5 characters long
+        if (StatCode.length() == 5)
+        {
+            int num = 4;
+            for (int w = 0; w <= num; w++)
+            {
+                if(!isdigit(StatCode[w]))
+                {
+                    check = 1;
+                }
+            }
+        } else
+        {
+            int num = 2;
+            for (int w = 0; w <= num; w++)
+            {
+                if(!isalpha(StatCode[w]))
+                {
+                    check = 1;
+                }
+                
+                string temp = StatCode;
+                string temp1 = temp;
+                changetoupper(temp);
+                
+                if (temp != temp1)
+                {
+                    check = 1;
+                }
+            }
+        }
+    }
+    if (check == 1)
+    {
+        return false;
+    } else
+    {
+        return true;
+    }
+}
+
+void Station::SetSC(string check)
+{
+    SN = check;
+}
+
+
+string Station::getSN()
+{
+    string last = SN;
+    return last;
+}
+
+string Station::getBT()
+{
+    if (BT == LONGPERIOD)  return "L";
+    if (BT == SHORTPERIOD) return "B";
+    if (BT == BROADBAND)   return "H";
+    exit(EXIT_FAILURE);
+}
 
