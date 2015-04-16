@@ -126,3 +126,42 @@ string Earthquake::getMagType()
     if (magnitude_type == MW) return "MW";
     exit(EXIT_FAILURE);
 }
+
+void Earthquake::set_time_zone(string &TZone)
+{
+    timezone = TZone;
+}
+
+bool Earthquake::CheckTimeZoneLength()
+{
+    if (timezone.length() != 3) return false;
+    return true;
+}
+
+bool Earthquake::CheckTimeZoneEntries()     // Checks that only letters are used in the time zone
+{
+    for (int i = 0; i < 3; i++)
+    {
+        if(!isalpha(timezone[i])) return false;
+    }
+    return true;
+}
+
+void Earthquake::HMS(string &H, string &M, string &S)     // Acquires hour, minute, and second from earthquake time
+{
+    H = time.substr(0,2);
+    M = time.substr(3,2);
+    S = time.substr(6,2);
+}
+
+void Earthquake::changetoupper(string &temp2)
+{
+    for (unsigned i = 0; i < temp2.length(); i++)
+    {
+        if (isalpha(temp2[i]))
+        {
+            temp2[i] = toupper(temp2[i]);
+        }
+    }
+}
+
