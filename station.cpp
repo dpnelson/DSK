@@ -26,6 +26,7 @@ void Station::BadEntry(ofstream &LF, int z, int &change, string errortype)
     LF   << " Invalid " << errortype;
 }
 
+//khademul
 bool Station::CheckBT(string &TB)
 {
     changetoupper(TB);
@@ -44,6 +45,7 @@ bool Station::CheckBT(string &TB)
     }
 }
 
+//khademul
 void Station::SetBT(string TB)
 {
     if(TB == "LONG-PERIOD" || TB == "LONGPERIOD" )
