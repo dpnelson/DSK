@@ -84,7 +84,7 @@ bool Earthquake::CheckDateSeperators(string tempS)
 }
 
 // Number check in the date
-bool Earthquake::CheckDateValidity(int place)    
+bool Earthquake::CheckDateValidity(int place)
 {
     if (!isdigit(date[place])) return false;
     return true;
@@ -156,36 +156,6 @@ void Earthquake::set_time(string timetime)
     time = timetime;
 }
 
-// this function ensures that,  only numbers are used in the data
-void Earthquake::GetTimeSubStr(int ii, string &tempS)
-{
-    tempS = time.substr(ii,1);
-}
-
-bool Earthquake::CheckTimeLength()
-{
-    if (time.length() != 12) return false;
-    return true;
-}
-
-bool Earthquake::CheckHourRange(int h)
-{
-    if (h > 23) return false;
-    return true;
-}
-
-bool Earthquake::CheckMinuteRange(int m)
-{
-    if (m > 59) return false;
-    return true;
-}
-
-bool Earthquake::CheckSecondRange(int s)
-{
-    if (s > 59) return false;
-    return true;
-}
-
 
 // This function set earthquake name
 
@@ -205,7 +175,7 @@ void Earthquake::set_eq_name(ifstream &IF)
             Ename = Ename + " " + Name;
         }
         if(IF.peek() == '\n') check = 0;
-    }
+}
     earthquake_name = Ename;
 }
 
@@ -284,5 +254,37 @@ void Earthquake::changetoupper(string &temp2)
             temp2[i] = toupper(temp2[i]);
         }
     }
+}
+
+double Earthquake::set_longitude(double longitudelong)
+{
+    longitude = longitudelong;
+    return longitude;
+}
+
+double Earthquake::set_latitude(double latitudelat)
+{
+    latitude = latitudelat;
+    return latitude;
+}
+
+double Earthquake::set_depth(double depthd)
+{
+    depth = depthd;
+    return depth;
+}
+
+float Earthquake::mag(float &magmag)
+{
+    magnitude = magmag;
+    return magnitude;
+}
+
+void Earthquake::HeaderOutput(ofstream &OF, string DD, string MM, string YY)
+{
+    string StrMagType = getMagType();
+    OF <<  "# " << DD << " " << MM << " " << YY << " " << time << " " << timezone << " ";
+    OF << StrMagType << " " << magnitude << " " << earthquake_name << " ";
+    OF << "[" << eyedee << "] " << "(" << longitude << ", " << latitude << ", " << depth << ")\n";
 }
 

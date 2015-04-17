@@ -123,3 +123,29 @@ void Set::CSE(ifstream &IF, ofstream &logfile, ofstream &OF, string ID) {
     }
     
     OF << totsignals << "\n";
+    
+    for (list<Station>::iterator end = stats.begin(); end != stats.end(); end++) {
+        
+        string orientorient = end->getOR();
+        int len = (int)orientorient.length();
+        for (int lore = 0; lore < len; lore++) {
+            
+            string NetCode = end->getNC();
+            string StatName = end->getSN();
+            string Band = end->getBT();
+            string Inst = end->getIT();
+            char Ore = orientorient[lore];
+            printout(ID, OF, NetCode, StatName, Band, Inst, Ore);
+        }
+        
+    }
+    
+    int countgood = numentries - countbad;
+    
+    print2(logfile, "Total invalid entries ignored: ", countbad);
+    print2(logfile, "Total valid entries read: ", countgood);
+    print2(logfile, "Total signal names processed: ", totsignals);
+    cout << "\n";
+    logfile << "\n";
+    
+}

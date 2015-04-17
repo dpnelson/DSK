@@ -12,6 +12,63 @@
 
 using namespace std;
 
+int MonthtoInteger(string MM)
+{
+    if (MM == "01") return 1;
+    if (MM == "02") return 2;
+    if (MM == "03") return 3;
+    if (MM == "04") return 4;
+    if (MM == "05") return 5;
+    if (MM == "06") return 6;
+    if (MM == "07") return 7;
+    if (MM == "08") return 8;
+    if (MM == "09") return 9;
+    if (MM == "10") return 10;
+    if (MM == "11") return 11;
+    if (MM == "12") return 12;
+    exit(EXIT_FAILURE);
+}
+
+enum months {
+    January = 1,
+    February,
+    March,
+    April,
+    May,
+    June,
+    July,
+    August,
+    September,
+    October,
+    November,
+    December
+};
+
+string monthtostring(months M)
+{
+    if (M == January  )  return  "January";
+    if (M == February )  return  "February";
+    if (M == March    )  return  "March";
+    if (M == April    )  return  "April";
+    if (M == May      )  return  "May";
+    if (M == June     )  return  "June";
+    if (M == July     )  return  "July";
+    if (M == August   )  return  "August";
+    if (M == September)  return  "September";
+    if (M == October  )  return  "October";
+    if (M == November )  return  "November";
+    if (M == December )  return  "December";
+    exit(EXIT_FAILURE);
+}
+
+void Fail(ofstream &logfile, string failtype)     // Handles any error in the header
+{
+    cout    << "Error: " << failtype << "\n";
+    logfile << "Error: " << failtype << "\n";
+    logfile.flush();
+    exit(EXIT_FAILURE);
+}
+
 string Header::PassInput(ifstream &IF, ofstream &logfile, ofstream &outputfile)
 {
     

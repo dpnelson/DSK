@@ -53,22 +53,25 @@ int OpenIPOP(ofstream &log, string &file, string &inputfilename, string &outputf
 {
     
     inputfilename = file + ".in";
-    string inputfilename2 = file + ".txt";
-    input.open(inputfilename2.c_str());
+    input.open(inputfilename.c_str());
     if ( !input.is_open() )
     {
         cout << inputfilename + " does not exist\n\n====\n\n";
         log  << inputfilename + " does not exist\n\n====\n\n";
+		outputfilename = file + ".out";
+		output.open(outputfilename.c_str());
         return 100;
     }
-    
-    outputfilename = file + ".out";
-    output.open(outputfilename.c_str());
-    
+
     return 10;
     
 }
 
+void printheader(ofstream &LF, string top)
+{
+    cout << top;
+    LF   << top;
+}
 
 int main(int argc, char* argv[])
 {
@@ -103,6 +106,8 @@ int main(int argc, char* argv[])
             inputfile.close();
         }
     }
+	
+	printheader(logfile, "Finished all!");
     
     return 0;
     
